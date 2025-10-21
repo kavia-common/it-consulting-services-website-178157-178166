@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/it-consulting-services-website-178157-178166/it_consulting_frontend"
+}
