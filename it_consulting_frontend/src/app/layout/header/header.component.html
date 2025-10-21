@@ -1,0 +1,25 @@
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a class="brand" routerLink="/" aria-label="Go to home">
+      <span class="brand-logo" aria-hidden="true">💼</span>
+      <span class="brand-text">{{ siteTitle }}</span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li *ngFor="let link of links">
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="active"
+            [attr.aria-label]="link.ariaLabel || link.label"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            class="nav-link"
+            [class.prominent]="link.prominent"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

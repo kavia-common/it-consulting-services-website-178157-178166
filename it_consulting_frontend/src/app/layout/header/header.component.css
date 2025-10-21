@@ -1,0 +1,88 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2563EB22, #11182708);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.brand-text {
+  font-size: 1.05rem;
+}
+
+.primary-nav .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  color: #374151;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.nav-link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.nav-link.active {
+  color: #111827;
+  background: linear-gradient(180deg, #2563EB12, #ffffff);
+  box-shadow: inset 0 0 0 1px #dbeafe, 0 1px 2px rgba(37,99,235,0.08);
+}
+
+.nav-link.prominent {
+  color: #111827;
+  background: #F59E0B1a;
+  box-shadow: inset 0 0 0 1px #fde68a, 0 1px 2px rgba(245,158,11,0.18);
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    gap: 0.75rem;
+  }
+  .primary-nav .nav-list {
+    gap: 0.4rem;
+  }
+  .nav-link {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.95rem;
+  }
+}

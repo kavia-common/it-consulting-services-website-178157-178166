@@ -1,3 +1,14 @@
-<div class="container">
-  <h1>{{ title }}</h1>
-</div>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<app-header [siteTitle]="title"></app-header>
+
+<main id="main-content" class="layout" role="main" aria-live="polite">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="right-rail">
+    <app-sidebar></app-sidebar>
+  </div>
+</main>
+
+<app-footer></app-footer>
