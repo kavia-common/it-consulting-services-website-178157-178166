@@ -21,29 +21,34 @@
     </header>
 
     <div class="cards">
-      <article class="card" aria-labelledby="svc1-title">
-        <h3 id="svc1-title" class="card-title">Cloud Architecture</h3>
-        <p class="card-body">Design secure, scalable foundations across AWS, Azure, or GCP.</p>
-      </article>
+      <app-card aria-labelledby="svc1-title" [hasFooter]="false">
+        <h3 id="svc1-title" class="card-title" card-header>Cloud Architecture</h3>
+        <p>Design secure, scalable foundations across AWS, Azure, or GCP.</p>
+      </app-card>
 
-      <article class="card" aria-labelledby="svc2-title">
-        <h3 id="svc2-title" class="card-title">DevOps Enablement</h3>
-        <p class="card-body">CI/CD, observability, and automation to reduce cycle times.</p>
-      </article>
+      <app-card aria-labelledby="svc2-title" [hasFooter]="false">
+        <h3 id="svc2-title" class="card-title" card-header>DevOps Enablement</h3>
+        <p>CI/CD, observability, and automation to reduce cycle times.</p>
+      </app-card>
 
-      <article class="card" aria-labelledby="svc3-title">
-        <h3 id="svc3-title" class="card-title">App Modernization</h3>
-        <p class="card-body">Refactor, containerize, and adopt modern frameworks confidently.</p>
-      </article>
+      <app-card aria-labelledby="svc3-title" [hasFooter]="false">
+        <h3 id="svc3-title" class="card-title" card-header>App Modernization</h3>
+        <p>Refactor, containerize, and adopt modern frameworks confidently.</p>
+      </app-card>
 
-      <article class="card" aria-labelledby="svc4-title">
-        <h3 id="svc4-title" class="card-title">Cost Optimization</h3>
-        <p class="card-body">Rightsize resources and align spend to business value.</p>
-      </article>
+      <app-card aria-labelledby="svc4-title" [hasFooter]="false">
+        <h3 id="svc4-title" class="card-title" card-header>Cost Optimization</h3>
+        <p>Rightsize resources and align spend to business value.</p>
+      </app-card>
     </div>
 
     <footer class="section-cta">
       <a routerLink="/contact" class="btn btn-primary" aria-label="Contact us to discuss your needs">Talk to an expert</a>
     </footer>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section" aria-label="Client testimonials">
+    <app-testimonials [showCTA]="true"></app-testimonials>
   </section>
 </main>

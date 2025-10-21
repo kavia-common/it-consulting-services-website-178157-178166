@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CardComponent } from '../shared/ui/card/card.component';
+import { TestimonialsComponent } from '../shared/ui/testimonials/testimonials.component';
 
 @Component({
   standalone: true,
   selector: 'app-home-page',
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent, TestimonialsComponent],
   template: `
     <section aria-labelledby="home-title">
       <h1 id="home-title">IT Consulting Services</h1>

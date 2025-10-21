@@ -1,11 +1,9 @@
 <aside class="sidebar" aria-label="Quick info and testimonials">
-  <section class="card">
-    <h3 class="card-title">Client Testimonial</h3>
-    <p class="card-body">“Their team modernized our infrastructure, cutting costs by 30% while boosting reliability.”</p>
-    <p class="card-meta">— CTO, SaaS Company</p>
-  </section>
-  <section class="card">
-    <h3 class="card-title">Get a Free Assessment</h3>
-    <p class="card-body">Book a 30-minute discovery call to identify quick wins for your stack.</p>
-  </section>
+  <app-card [hasFooter]="true">
+    <h3 class="card-title" card-header>Featured Insight</h3>
+    <p>Book a 30-minute discovery call to identify quick wins for your stack.</p>
+    <p class="card-meta" card-footer>Response within one business day.</p>
+  </app-card>
+
+  <app-testimonials [showCTA]="false"></app-testimonials>
 </aside>
