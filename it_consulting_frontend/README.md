@@ -1,59 +1,94 @@
-# Angular
+# IT Consulting Frontend (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+This project is an Angular 19 single-page app with SSR capability for an IT consulting website. It follows the Ocean Professional theme defined in global CSS utilities.
 
-## Development server
+## Quick start
 
-To start a local development server, run:
+- Dev server (keeps port 3000):
+  ```bash
+  npm start
+  ```
+  Open http://localhost:3000. The server auto-reloads on file changes.
+
+- Production build:
+  ```bash
+  npm run build:prod
+  ```
+  Outputs to `dist/angular` with hashed assets and optimizations.
+
+- Standard build (non-explicit config):
+  ```bash
+  npm run build
+  ```
+
+- Preview SSR (after a build):
+  ```bash
+  npm run preview:ssr
+  ```
+  This serves the built SSR bundle from `dist/angular/server`. Default port is 4000 (override with `PORT=xxxx`).
+
+- Unit tests:
+  ```bash
+  npm test
+  ```
+
+## Angular config
+
+- outputPath: `dist/angular` (see `angular.json`)
+- Dev server port: 3000, host `0.0.0.0`, host check disabled (configured under `architect.serve.options`)
+- SSR is enabled in the application builder; server entry is `src/server.ts`
+
+## Theme: Ocean Professional
+
+Global styles and utilities live in `src/styles.css`. Design tokens are also available in TS via `src/app/theme/theme.tokens.ts`.
+
+- Primary: `#2563EB`
+- Secondary/Success: `#F59E0B`
+- Error: `#EF4444`
+- Background: `#f9fafb`
+- Surface: `#ffffff`
+- Text: `#111827`
+- Utilities:
+  - Buttons: `.btn`, `.btn-primary`, `.btn-ghost`
+  - Surfaces/Cards: `.surface`, `.card`
+  - Shadows: `.shadow-xs|sm|md`
+  - Radius: `.rounded-sm|md|lg|full`
+  - Alerts: `.alert`, `.alert-success`, `.alert-error`
+
+These are consumed by components (e.g., Header, Cards, Testimonials, Contact form) and are safe to reuse in new features.
+
+## Scaffolding
+
+Generate components and utilities using Angular CLI:
 
 ```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
+ng generate component path/name
+# or
 ng generate --help
 ```
 
-## Building
+## Notes on dependencies
 
-To build the project run:
+- Angular packages must use the same exact version across `@angular/*` to avoid build issues. This project pins versions accordingly.
+- Avoid adding version ranges for core Angular packages unless you update all `@angular/*` together.
 
-```bash
-ng build
-```
+## Folder highlights
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `src/app/pages/*` standalone route components
+- `src/app/layout/*` header, sidebar, footer
+- `src/app/shared/*` UI components, services, models, validators
+- `src/app/theme/theme.tokens.ts` theme constants
+- `src/styles.css` global theme and utilities
+- `src/server.ts`, `src/main.server.ts` SSR bootstrap and server
 
-## Running unit tests
+## Deployment
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Build with `npm run build:prod` which produces `dist/angular/browser` and `dist/angular/server`.
+- Serve SSR bundle with a Node process using:
+  ```bash
+  node dist/angular/server/server.mjs
+  ```
+  or use the script `npm run preview:ssr`.
+- Configure your hosting to serve static assets from `dist/angular/browser` and route all requests to the SSR handler where applicable.
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For CLI details, see the Angular docs: https://angular.dev/tools/cli
