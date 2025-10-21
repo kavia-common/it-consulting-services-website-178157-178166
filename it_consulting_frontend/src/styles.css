@@ -1,12 +1,203 @@
-/* Global styles for minimalistic design */
-* {
-  margin: 0;
-  padding: 0;
+/* Ocean Professional - Global Theme and Utilities
+   Palette:
+   - Primary: #2563EB
+   - Secondary/Success: #F59E0B
+   - Error: #EF4444
+   - Background: #f9fafb
+   - Surface: #ffffff
+   - Text: #111827
+*/
+
+:root {
+  /* Color tokens */
+  --color-primary: #2563EB;
+  --color-secondary: #F59E0B;
+  --color-success: #F59E0B;
+  --color-error: #EF4444;
+
+  --color-bg: #f9fafb;
+  --color-surface: #ffffff;
+
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-text-subtle: #6b7280;
+
+  --color-border: #e5e7eb;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 1px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+
+  /* Transitions */
+  --transition-fast: 160ms ease;
+  --transition-normal: 220ms ease;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(180deg, rgba(37,99,235,0.10), #f9fafb);
+}
+
+/* CSS Reset - minimal and safe */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
-  background-color: #ffffff;
+}
+
+/* Base typography and document colors */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast), opacity var(--transition-fast);
+}
+a:hover {
+  color: #1d4ed8; /* slightly darker primary */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  line-height: 1.25;
+}
+
+/* Global utility classes */
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+  cursor: pointer;
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+  border-color: #fde68a;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px #fde68a;
+}
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--color-secondary) 28%, white);
+}
+
+.btn-ghost {
+  color: #374151;
+  background: #f3f4f6;
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-xs);
+}
+.btn-ghost:hover {
+  background: #e5e7eb;
+}
+
+/* Cards and Surfaces */
+.card,
+.surface {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.card {
+  padding: 1rem;
+}
+.card-title {
+  color: var(--color-text);
+}
+.card-body {
+  color: #374151;
+}
+
+/* Links variants */
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+.link:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+/* Shadows */
+.shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+
+/* Rounded helpers */
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Transitions helpers */
+.transition-fast { transition: all var(--transition-fast); }
+.transition { transition: all var(--transition-normal); }
+
+/* Global focus style for accessibility */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 60%, white);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+/* Global layout helpers */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Ensure app root uses subtle gradient background consistent with theme */
+app-root,
+:root body app-root {
+  display: block;
+  min-height: 100vh;
+  background-image: var(--gradient-primary);
+  background-attachment: scroll;
 }
