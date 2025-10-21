@@ -25,8 +25,15 @@ export default [
         beforeEach: "readonly",
         it: "readonly",
         expect: "readonly",
-        // Browser globals
+        // Browser globals used in app code
+        window: "readonly",
+        document: "readonly",
+        setTimeout: "readonly",
+        Event: "readonly",
+        Node: "readonly",
         HTMLElement: "readonly",
+        HTMLButtonElement: "readonly",
+        HTMLAnchorElement: "readonly",
         // Node.js globals
         process: "readonly",
         console: "readonly"

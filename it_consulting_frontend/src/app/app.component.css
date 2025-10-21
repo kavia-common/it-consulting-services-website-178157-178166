@@ -14,9 +14,13 @@
   border-radius: 6px;
   transition: top 0.2s ease;
   z-index: 100;
+  text-decoration: none;
 }
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
   top: 8px;
+  outline: 2px solid #fbbf24; /* amber for contrast on dark skip link */
+  outline-offset: 2px;
 }
 
 .layout {
@@ -41,11 +45,23 @@
   min-width: 0;
 }
 
+/* Stack layout on medium screens */
 @media (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
   }
   .right-rail {
     order: 2;
+  }
+}
+
+/* Tighten paddings and spacing on small screens */
+@media (max-width: 560px) {
+  .layout {
+    padding-inline: .75rem;
+    gap: .9rem;
+  }
+  .content {
+    padding: .9rem 1rem;
   }
 }

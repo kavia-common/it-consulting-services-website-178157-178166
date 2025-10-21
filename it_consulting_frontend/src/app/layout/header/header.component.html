@@ -5,8 +5,33 @@
       <span class="brand-text">{{ siteTitle }}</span>
     </a>
 
-    <nav class="primary-nav" aria-label="Primary">
-      <ul class="nav-list">
+    <!-- Mobile menu button -->
+    <button
+      #menuButton
+      class="menu-button"
+      type="button"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="isMenuOpen ? 'true' : 'false'"
+      aria-controls="primary-navigation"
+      (click)="toggleMenu()"
+    >
+      <span class="menu-icon" aria-hidden="true">
+        <!-- hamburger / close -->
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+        <span class="bar" [class.open]="isMenuOpen"></span>
+      </span>
+    </button>
+
+    <nav
+      #primaryNav
+      class="primary-nav"
+      [class.open]="isMenuOpen"
+      aria-label="Primary"
+      [attr.aria-hidden]="isMenuOpen ? null : null"
+      id="primary-navigation"
+    >
+      <ul class="nav-list" role="list">
         <li *ngFor="let link of links">
           <a
             [routerLink]="link.path"
@@ -15,6 +40,7 @@
             [routerLinkActiveOptions]="{ exact: link.path === '/' }"
             class="nav-link"
             [class.prominent]="link.prominent"
+            (click)="isMenuOpen = false"
           >
             {{ link.label }}
           </a>
